@@ -1,0 +1,245 @@
+/* :root {
+  --color-text: #eee;
+  --color-text-secondary: #eee;
+  --color-text-tertiary: #aaa;
+  --color-background: #2e3233;
+  --color-hover: #3d4243;
+  --color-accent: #34ae91;
+  --color-accent-hover: #67c2ad;
+  --color-shadow: #000;
+  --color-shadow-dark: #000;
+  --color-highlight: #394743;
+  --color-divider: #555;
+} */
+
+/* background-color: rgb(10, 25, 47);
+    color: rgb(136, 146, 176); */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  background-color: rgb(10, 25, 47);
+  color: rgb(136, 146, 176);
+  line-height: 1.4;
+  font-family: "Share Tech Mono", sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+.header {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  height: 5em;
+  display: flex;
+  box-shadow: 0 0 7px rgb(2, 10, 22);
+}
+.header--nav button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(23, 42, 69);
+  color: rgb(136, 146, 176);
+  padding: 0.6em 0.8em;
+  border: none;
+  border-radius: 100em;
+  box-shadow: 0 1px 5px rgb(2, 10, 22);
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  /* letter-spacing: 1px; */
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.header--nav button:hover {
+  background-color: rgb(28, 51, 83);
+}
+
+.header--nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 2em 0.8em;
+}
+
+.header--nav .nav--right {
+  display: flex;
+  justify-content: center;
+}
+
+.img--clear {
+  margin-right: 0.2em;
+  padding-bottom: 0.2em;
+}
+
+.button--light--mode {
+  margin-left: 1em;
+}
+
+/* .header--nav .button--light--mode {
+  transition: all 0.25s 0s;
+}
+.header--nav .button--light--mode:hover {
+  transform: rotate(45deg);
+} */
+
+.main--content {
+  margin: 1.4em auto;
+  max-width: 1024px;
+}
+
+.list--content--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.list--content--header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+  padding: 0;
+}
+.list--title {
+  color: rgb(204, 214, 246);
+  font-size: 3.6em;
+  font-weight: 300;
+  text-align: center;
+}
+
+.list--title--line {
+  content: "";
+  display: block;
+  background-color: rgb(48, 60, 85);
+  width: 30%;
+  height: 1px;
+  margin: 0.2em 0;
+}
+.list--task--count {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0.6em 0;
+}
+
+.list--title--edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  min-width: 105px;
+  background-color: rgb(10, 25, 47);
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-radius: 2px;
+  padding: 0.6em 0;
+  margin: 0.6em 0;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.list--content--main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 2em 0;
+}
+.list--title--edit:hover {
+  background-color: rgb(23, 42, 69);
+}
+
+.list--item {
+  display: flex;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+  border-bottom: 1px solid rgb(48, 60, 85);
+  padding: 0.6em 0.4em 0.6em 0;
+}
+
+.list--item .icon--drag {
+  cursor: grab;
+}
+.list--item--checkbox {
+  background-color: rgb(10, 25, 47);
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+.list--item--name {
+  background-color: rgb(10, 25, 47);
+  border: none;
+  width: 90%;
+  color: rgb(136, 146, 176);
+  padding: 0.2em 0.6em;
+  font-size: 1.2em;
+}
+.list--item--remove {
+  background-color: rgb(10, 25, 47);
+  border: none;
+  display: flex;
+  cursor: pointer;
+}
+
+.list--item--add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  min-width: 105px;
+  background-color: rgb(10, 25, 47);
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-radius: 2px;
+  padding: 0.6em 0;
+  margin: 4em 0 2em 0;
+  font-size: 0.8em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
+.list--item--add:hover {
+  background-color: rgb(23, 42, 69);
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    max-width: 80%;
+  }
+  .list--title {
+    font-size: 2.6em;
+  }
+
+  .list--task--count {
+    font-size: 1.2em;
+  }
+}
