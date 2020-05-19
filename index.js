@@ -1,5 +1,5 @@
 // UI Selectors
-const clearListBtn = document.querySelector(".button--navbar--delete");
+
 const lightModeToggle = document.querySelector(".button--light--mode");
 const listTitle = document.querySelector(".list--title");
 const editTitleBtn = document.querySelector(".list--title--edit");
@@ -67,6 +67,12 @@ class UI {
       el.parentElement.parentElement.remove();
     }
   }
+
+  static removeTaskList() {
+    const taskList = document.querySelectorAll(".list--item");
+    const taskListArr = [...taskList];
+    taskListArr.forEach((task) => task.remove());
+  }
 }
 
 class Store {
@@ -120,6 +126,10 @@ class Store {
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
+
+  static clearTaskList() {
+    localStorage.clear("tasks");
+  }
 }
 
 // Events
@@ -163,6 +173,15 @@ listContainer.addEventListener("change", (e) => {
     Store.changeTaskName(e.target);
   }
 });
+
+// Clear taskList
+document
+  .querySelector(".button--navbar--delete")
+  .addEventListener("click", () => {
+    Store.clearTaskList();
+    UI.removeTaskList();
+    UI.displayTasksCount();
+  });
 
 // clearListBtn.addEventListener("click", clearList);
 // lightModeToggle.addEventListener("click", toggleLightMode);
