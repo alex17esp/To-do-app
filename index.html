@@ -33,10 +33,21 @@
     <main class="main--content">
       <div class="list--content--container">
         <section class="list--content--header">
-          <h1 class="list--title">List Name</h1>
+          <h1 class="list--title"></h1>
           <div class="list--title--line"></div>
           <p class="list--task--count"></p>
           <button class="list--title--edit">Edit Name</button>
+
+          <div class="list--title--modal">
+            <div class="modal--content">
+              <button class="close--modal">
+                <img src="./assets/close.svg" alt="" class="icon--remove" />
+              </button>
+              <h1 class="modal--list--title">Change List Name</h1>
+              <input type="text" class="title--input" />
+              <button class="modal--confirm">Confirm</button>
+            </div>
+          </div>
         </section>
 
         <section class="list--content--main">
@@ -59,47 +70,7 @@
             <button class="list--item--remove">
               <img src="./assets/close.svg" alt="" class="icon--remove" />
             </button>
-          </div>
-          <div class="list--item">
-            <img
-              src="./assets/GoogleMaterial ic drag handle 48px.svg"
-              alt=""
-              srcset=""
-              transform="rotate(45deg)"
-              class="icon--drag"
-            />
-            <button class="list--item--checkbox">
-              <img
-                src="./assets/unchecked.svg"
-                alt=""
-                class="icon--empty--checkbox"
-              />
-            </button>
-            <input type="text" class="list--item--name" />
-            <button class="list--item--remove">
-              <img src="./assets/close.svg" alt="" class="icon--remove" />
-            </button>
-          </div>
-          <div class="list--item">
-            <img
-              src="./assets/GoogleMaterial ic drag handle 48px.svg"
-              alt=""
-              srcset=""
-              transform="rotate(45deg)"
-              class="icon--drag"
-            />
-            <button class="list--item--checkbox">
-              <img
-                src="./assets/unchecked.svg"
-                alt=""
-                class="icon--empty--checkbox"
-              />
-            </button>
-            <input type="text" class="list--item--name" />
-            <button class="list--item--remove">
-              <img src="./assets/close.svg" alt="" class="icon--remove" />
-            </button> -->
-          <!-- </div> -->
+          </div> -->
         </section>
         <button class="list--item--add">Add Task</button>
       </div>

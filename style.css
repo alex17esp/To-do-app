@@ -173,6 +173,84 @@ img {
   background-color: rgb(23, 42, 69);
 }
 
+.list--title--modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  /* animation-name: showmodal;
+  animation-duration: 0.4s; */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal--content {
+  background-color: rgb(10, 25, 47);
+  /* width: 40%;
+  height: 50%; */
+  margin: 10% auto;
+  min-width: 300px;
+  min-height: 250px;
+  padding: 0.6em 1em;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgb(2, 10, 22);
+  animation-name: showmodal;
+  animation-duration: 0.3s;
+}
+
+.close--modal {
+  background-color: rgb(10, 25, 47);
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.modal--list--title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8em;
+  align-self: center;
+  text-align: center;
+}
+
+.title--input {
+  background-color: rgb(10, 25, 47);
+  border: 1px solid #64ffda;
+  padding: 0.4em;
+  width: 90%;
+  color: rgb(136, 146, 176);
+  font-size: 1rem;
+}
+
+.modal--confirm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  min-width: 100px;
+  background-color: rgb(10, 25, 47);
+  color: #64ffda;
+  border: 1px solid #64ffda;
+  border-radius: 2px;
+  padding: 0.6em 0;
+  margin: 2em 0 2em 0;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+}
+
 .list--item {
   display: flex;
   width: 100%;
@@ -199,6 +277,15 @@ img {
   padding: 0.2em 0.6em;
   font-size: 1.2em;
 }
+
+.list--item.checked .icon--empty--checkbox.checked {
+  content: url("./assets/check-r.svg");
+}
+
+.list--item.checked .list--item--name {
+  color: rgb(91, 100, 128);
+  text-decoration: line-through;
+}
 .list--item--remove {
   background-color: rgb(10, 25, 47);
   border: none;
@@ -218,7 +305,7 @@ img {
   border-radius: 2px;
   padding: 0.6em 0;
   margin: 4em 0 2em 0;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -231,15 +318,26 @@ img {
   background-color: rgb(23, 42, 69);
 }
 
+@keyframes showmodal {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media screen and (max-width: 500px) {
   .logo {
     max-width: 80%;
   }
   .list--title {
-    font-size: 2.6em;
+    font-size: 2rem;
   }
 
   .list--task--count {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 }

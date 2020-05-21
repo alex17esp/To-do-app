@@ -9,11 +9,14 @@ const deleteTaskBtn = document.querySelector(".icon--remove");
 // const addTaskBtn = document.querySelector(".list--item--add");
 const listContainer = document.querySelector(".list--content--main");
 const listCount = document.querySelector(".list--task--count");
+const modal = document.querySelector(".list--title--modal");
+let id = 0;
 
 class Task {
-  constructor(name = "New Task", id) {
+  constructor() {
     this.name = "New Task";
-    this.id = id;
+    this.id = id++;
+    this.checked = false;
   }
 }
 
@@ -73,6 +76,17 @@ class UI {
     const taskListArr = [...taskList];
     taskListArr.forEach((task) => task.remove());
   }
+
+  static displayTitle() {
+    const title = Store.getTitleName();
+    const listTitle = document.querySelector(".list--title");
+    listTitle.textContent = title;
+  }
+
+  static updateTitleDisplay(title) {
+    document.querySelector(".list--title").textContent = title;
+    document.querySelector(".modal--list--title").textContent = title;
+  }
 }
 
 class Store {
@@ -96,7 +110,7 @@ class Store {
   static removeTask(el) {
     const tasks = Store.getTasks();
     tasks.forEach((task, index) => {
-      if (el.dataset.id == index) {
+      if (el.dataset.id == task.id) {
         tasks.splice(index, 1);
       }
     });
@@ -130,6 +144,27 @@ class Store {
   static clearTaskList() {
     localStorage.clear("tasks");
   }
+
+  static getTitleName() {
+    let title;
+    if (localStorage.getItem("title") === null) {
+      title = "New List";
+    } else {
+      title = JSON.parse(localStorage.getItem("title"));
+    }
+
+    return title;
+  }
+
+  static changeTitleName(input) {
+    let title = Store.getTitleName();
+    title = input;
+    localStorage.setItem("title", input);
+  }
+
+  static updateTitleStorage(input) {
+    localStorage.setItem("title", JSON.stringify(input));
+  }
 }
 
 // Events
@@ -137,13 +172,12 @@ class Store {
 document.addEventListener("DOMContentLoaded", () => {
   UI.displayTasks();
   UI.displayTasksCount();
+  UI.displayTitle();
 });
 
 // Add a task
 document.querySelector(".list--item--add").addEventListener("click", () => {
-  const tasks = Store.getTasks();
-  const id = tasks.length;
-  const task = new Task(name, id);
+  const task = new Task();
   UI.addTaskToList(task);
   Store.addTask(task);
   UI.displayTasksCount();
@@ -163,7 +197,6 @@ listContainer.addEventListener("focusin", (e) => {
     e.target.classList.contains("list--item--name") &&
     e.target.value === "New Task"
   ) {
-    console.log(e.target.value);
     Store.clearTaskName(e.target);
   }
 });
@@ -183,10 +216,29 @@ document
     UI.displayTasksCount();
   });
 
-// clearListBtn.addEventListener("click", clearList);
-// lightModeToggle.addEventListener("click", toggleLightMode);
-// editTitleBtn.addEventListener("click", editListTitle);
-// listDragBtn.addEventListener();
-// deleteTaskBtn.addEventListener("click", deleteTask);
-// addTaskBtn.addEventListener("click", addTaskToList);
-// listContainer.addEventListener("click", completeTask);
+document.querySelector(".list--title--edit").addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+document.querySelector(".icon--remove").addEventListener("click", () => {
+  modal.style.display = "none";
+});
+document.querySelector(".modal--confirm").addEventListener("click", () => {
+  modal.style.display = "none";
+});
+window.addEventListener("click", (e) => {
+  if (e.target == modal) modal.style.display = "none";
+});
+
+document.querySelector(".title--input").addEventListener("input", (e) => {
+  Store.updateTitleStorage(e.target.value);
+  UI.updateTitleDisplay(e.target.value);
+});
+
+listContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("icon--empty--checkbox")) {
+    e.target.classList.toggle("checked");
+    e.target.parentElement.parentElement.classList.toggle("checked");
+    Store.taskCompleted(e.target);
+  }
+});
